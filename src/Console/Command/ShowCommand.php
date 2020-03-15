@@ -98,7 +98,7 @@ final class ShowCommand extends AbstractCommand
 
         $configuration = [];
         foreach ($constructorReflection->getParameters() as $reflectionParameter) {
-            $parameterType = (string) $reflectionParameter->getType();
+            $parameterType = (string) ($reflectionParameter->getType() ? $reflectionParameter->getType()->getName() : null);
             if (! $this->typeAnalyzer->isPhpReservedType($parameterType)) {
                 continue;
             }
